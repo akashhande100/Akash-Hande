@@ -1,0 +1,41 @@
+package seleniumPrograms;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class FacebookLoginPage {
+	static WebDriver driver;
+
+	public static void launchBrowser() {
+
+		System.setProperty("webdriver.chrome.driver", "D:\\Selenium\\chromedriver.exe");
+		driver = new ChromeDriver();
+	}
+
+	public static void manageOperation() {
+		driver.manage().window().maximize();
+	}
+
+	public static void openFacebookApplication(String url) {
+		driver.get(url);
+	}
+
+	public static void loginCredential() {
+		driver.findElement(By.name("email")).sendKeys("akashhande100");
+
+		driver.findElement(By.name("pass")).sendKeys("Hande@123");
+
+		driver.findElement(By.name("login")).click();
+
+	}
+
+	public static void main(String[] args) {
+
+		launchBrowser();
+		manageOperation();
+		openFacebookApplication("https://www.facebook.com/");
+		loginCredential();
+	}
+}
