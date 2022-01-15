@@ -13,6 +13,10 @@ public class LaunchBrowserWithCustomisedMethod {
 		driver = new ChromeDriver();
 	}
 
+	public static void manageOperation() {
+		driver.manage().window().maximize();
+	}
+
 	public static void openApplicationUrl(String url) {
 		driver.get(url);
 	}
@@ -41,19 +45,50 @@ public class LaunchBrowserWithCustomisedMethod {
 		driver.navigate().back();
 	}
 
+	public static void clickButton(WebElement ele) {
+		ele.click();
+	}
+
+	public static void clearText(WebElement ele) {
+		ele.clear();
+	}
+
+	public static void sendKeys(WebElement ele, String value) {
+		ele.sendKeys(value);
+	}
+
+	public static void getText(WebElement ele, String value) {
+		ele.getText();
+	}
+
+	public static String getAttribute(WebElement ele, String value) {
+		return ele.getAttribute(value);
+	}
+
+	public static String getCssValue(WebElement ele, String value) {
+		return ele.getCssValue(value);
+	}
+
+	public static String getTagName(WebElement ele, String value) {
+		return ele.getTagName();
+	}
+
 	public static void main(String[] args) {
 
 		launchBrowser();
-		// openApplicationUrl("https://www.amazon.com/");
+		manageOperation();
 		openApplicationUrl("https://www.flipkart.com/");
 		String title = getPageTitle();
 		System.out.println("Application Title = " + title);
 		System.out.println("Current Url = " + getCurrentUrl());
 		System.out.println("Page Source = " + getPageSource().substring(0, 10));
 		navigationOperation();
-		closeCurrentWindow();
-		closeBrowser();
+	//	closeCurrentWindow();
+	//	closeBrowser();
 
+		String a = getAttribute(driver.findElement(By.cssSelector("input[name='q']")),"placeholder");
+		System.out.println("Actual Placeholder : "+ a);
+	
 	}
 
 }
